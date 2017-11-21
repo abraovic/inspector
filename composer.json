@@ -1,0 +1,31 @@
+{
+  "name": "abraovic/inspector",
+  "type": "library",
+  "description": "Inspect time and memory for php script",
+  "homepage": "https://github.com/abraovic/inspector",
+  "license": "MIT",
+  "keywords": [
+    "php",
+    "time",
+    "memory"
+  ],
+  "authors": [
+    {
+      "name": "Ante Braovic",
+      "email": "abraovic@gmail.com",
+      "homepage": "http://antebraovic.me"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/abraovic/inspector/issues",
+    "source": "https://github.com/abraovic/inspector"
+  },
+  "require": {
+    "php": ">=7"
+  },
+  "autoload": {
+    "psr-4": {
+      "abraovic\\inspector\\": "src/"
+    }
+  }
+}
