@@ -5,10 +5,12 @@ namespace abraovic\inspector;
 class Time
 {
     private static $timeInspectorStart;
+    private  static $classicStart;
 
     public static function startTimeInspector()
     {
         self::$timeInspectorStart = getrusage();
+        self::$classicStart = microtime(true);
     }
 
     /**
@@ -20,11 +22,14 @@ class Time
     public static function getTimeStats(): string
     {
         $end = getrusage();
-        $classicEnd = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
+        $endMicrotime = microtime(true);
+        $classicEnd = $endMicrotime - self::$classicStart;
+        $classicBeginToEnd = $endMicrotime - $_SERVER["REQUEST_TIME_FLOAT"];
 
         $output = "This process used " . self::ruTime($end, 'utime') . " ms for its computations\n";
         $output .= "It spent " . self::ruTime($end, 'stime') . " ms in system calls\n";
         $output .= "Microtime: " . $classicEnd . " s\n";
+        $output .= "Microtime (from the beginning of the request): " . $classicBeginToEnd . " s\n";
 
         return $output;
     }
