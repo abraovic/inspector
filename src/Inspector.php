@@ -11,7 +11,7 @@ class Inspector
      *
      * @param string $filename
      */
-    public function init($filename)
+    public static function init($filename)
     {
         self::$filename = $filename;
         self::$toFile = true;
